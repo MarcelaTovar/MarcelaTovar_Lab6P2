@@ -14,6 +14,7 @@ public class ListaDeReproduccion {
     private String nombre;
     private int conteoDeLikes;
     private ArrayList<Cancion> canciones = new ArrayList();
+    private ArrayList<Cliente> clientesLikes = new ArrayList();
 
     public ListaDeReproduccion() {
     }
@@ -45,7 +46,18 @@ public class ListaDeReproduccion {
 
     public void setCanciones(ArrayList<Cancion> canciones) {
         this.canciones = canciones;
+        
     }
+
+    public ArrayList<Cliente> getClientesLikes() {
+        return clientesLikes;
+    }
+
+    public void setClientesLikes(ArrayList<Cliente> clientesLikes) {
+        this.clientesLikes = clientesLikes;
+    }
+    
+    
 
     @Override
     public String toString() {
