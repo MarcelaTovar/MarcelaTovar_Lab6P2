@@ -1,5 +1,8 @@
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,6 +20,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+
         au.cargarArchivo();
 
     }
@@ -62,6 +66,11 @@ public class Main extends javax.swing.JFrame {
         JSpinner_CrearClienteEdad = new javax.swing.JSpinner();
         JButton_CrearClienteUser = new javax.swing.JButton();
         JFrame_Spotify = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTree2 = new javax.swing.JTree();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -306,15 +315,45 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jScrollPane3.setViewportView(jTree2);
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList2);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout JFrame_SpotifyLayout = new javax.swing.GroupLayout(JFrame_Spotify.getContentPane());
         JFrame_Spotify.getContentPane().setLayout(JFrame_SpotifyLayout);
         JFrame_SpotifyLayout.setHorizontalGroup(
             JFrame_SpotifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JFrame_SpotifyLayout.setVerticalGroup(
             JFrame_SpotifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -453,7 +492,7 @@ public class Main extends javax.swing.JFrame {
         }
         if (confirm) {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
-        } 
+        }
 
 
     }//GEN-LAST:event_JButton_LogInMouseClicked
@@ -465,6 +504,7 @@ public class Main extends javax.swing.JFrame {
 
     private void JButton_CrearArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_CrearArtistaMouseClicked
         // TODO add your handling code here:
+        JFrame_CrearArtista.setVisible(true);
     }//GEN-LAST:event_JButton_CrearArtistaMouseClicked
 
     private void JPasswordField_CrearArtistaContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPasswordField_CrearArtistaContraActionPerformed
@@ -472,21 +512,26 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JPasswordField_CrearArtistaContraActionPerformed
 
     private void JButton_CrearArtistaUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_CrearArtistaUserMouseClicked
-        // TODO add your handling code here:
-        String user = "", nombreArtistico = "";
-        String contrasenia = "";
-        int edad = 0;
-        user = JTextField_CrearArtistaUsuario.getText();
-        contrasenia = String.valueOf(JPasswordField_CrearArtistaContra.getPassword());
-        edad = (int) JSpinner_CrearArtistaEdad.getValue();
-        nombreArtistico = JTextField_CrearNombreUsuario.getText();
+        try {
+            // TODO add your handling code here:
 
-        Artista a = new Artista(nombreArtistico, user, contrasenia, edad);
-        usuarios.add(a);
-
-        JOptionPane.showMessageDialog(JFrame_CrearArtista, "Usuario Creado con Exito");
-        JFrame_CrearArtista.setVisible(false);
-        this.setVisible(true);
+            au.cargarArchivo();
+            String user = "", nombreArtistico = "";
+            String contrasenia = "";
+            int edad = 0;
+            user = JTextField_CrearArtistaUsuario.getText();
+            contrasenia = String.valueOf(JPasswordField_CrearArtistaContra.getPassword());
+            edad = (int) JSpinner_CrearArtistaEdad.getValue();
+            nombreArtistico = JTextField_CrearNombreUsuario.getText();
+            Artista a = new Artista(nombreArtistico, user, contrasenia, edad);
+            au.getUsuarios().add(a);
+            au.escribirArchivo();
+//        JOptionPane.showMessageDialog(JFrame_CrearArtista, "Usuario Creado con Exito");
+//        JFrame_CrearArtista.setVisible(false);
+//        this.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_JButton_CrearArtistaUserMouseClicked
 
     private void JPaswordField_CrearClienteContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPaswordField_CrearClienteContraActionPerformed
@@ -494,20 +539,26 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JPaswordField_CrearClienteContraActionPerformed
 
     private void JButton_CrearClienteUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_CrearClienteUserMouseClicked
-        // TODO add your handling code here:
-        String user = "";
-        String contrasenia = "";
-        int edad = 0;
+        try {
+            // TODO add your handling code here:
+            au.cargarArchivo();
+            String user = "";
+            String contrasenia = "";
+            int edad = 0;
 
-        user = JTextField_CrearClienteUsuario.getText();
-        contrasenia = String.valueOf(JPaswordField_CrearClienteContra.getPassword());
-        edad = (int) JSpinner_CrearClienteEdad.getValue();
+            user = JTextField_CrearClienteUsuario.getText();
+            contrasenia = String.valueOf(JPaswordField_CrearClienteContra.getPassword());
+            edad = (int) JSpinner_CrearClienteEdad.getValue();
 
-        Cliente c = new Cliente(user, contrasenia, edad);
-        usuarios.add(c);
-        JOptionPane.showMessageDialog(JFrame_CrearCliente, "Usuario Creado con Exito");
-        JFrame_CrearCliente.setVisible(false);
-        this.setVisible(true);
+            Cliente c = new Cliente(user, contrasenia, edad);
+            au.getUsuarios().add(c);
+            au.escribirArchivo();
+//        JOptionPane.showMessageDialog(JFrame_CrearCliente, "Usuario Creado con Exito");
+//        JFrame_CrearCliente.setVisible(false);
+//        this.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_JButton_CrearClienteUserMouseClicked
 
     private void JButton_CrearOyenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButton_CrearOyenteMouseClicked
@@ -583,10 +634,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTree jTree2;
     // End of variables declaration//GEN-END:variables
 
 //Variables globales

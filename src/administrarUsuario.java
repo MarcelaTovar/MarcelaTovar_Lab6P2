@@ -1,6 +1,8 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -74,36 +76,33 @@ public class administrarUsuario {
         fw.close();
     }
 
-    public void cargarArchivo() {
-        Scanner sc = null;
-        usuarios = new ArrayList();
-        if (archivo.exists()) {
-            try {
-                sc = new Scanner(archivo);
-                sc.useDelimiter(";");
-                while (sc.hasNext()) {
-                    for (Usuario usuario : usuarios) {
-                        if (usuario instanceof Artista) {
-                            usuarios.add(new Artista(sc.next(), sc.next(),
-                                    sc.next(),
-                                    sc.nextInt()
-                            )
-                            );
+    public ArrayList<Usuario> cargarArchivo() {
+//        
+        Object[] lineas = null;
+        try {
+            FileReader fr = new FileReader("./usuarios.txt");
+            BufferedReader br = new BufferedReader(fr);
 
-                        } else if (usuario instanceof Cliente) {
-                            usuarios.add(new Cliente(sc.next(),
-                                    sc.next(),
-                                    sc.nextInt()
-                            )
-                            );
-                        }
-                    }
+            lineas = br.lines().toArray(); 
+            br.close();
+            fr.close();
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        for (int i = 0; i < lineas.length; i++) {
+            String[] arrLine = String.valueOf(lineas[i]).split(";");
+            Usuario u = new Usuario();
+            u.setUsername(arrLine[0]);
+            u.setContrasenia(arrLine[1]);
+            usuarios.add(u);
 
-                }
-            } catch (Exception ex) {
+            {
             }
-            sc.close();
-        }//FIN IF
+        }
+        return usuarios;
     }
 
 }
+
+
