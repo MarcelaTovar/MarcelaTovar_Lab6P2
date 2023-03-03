@@ -5,23 +5,28 @@ import java.util.Arrays;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author marcela
  */
 public class Usuario {
+
     protected String username;
-    protected char[]contrasenia;
+    protected String contrasenia;
     protected int edad;
 
     public Usuario() {
     }
 
-    public Usuario(String username, char[] contrasenia, int edad) {
+    public Usuario(String username, String contrasenia, int edad) {
         this.username = username;
         this.contrasenia = contrasenia;
         this.edad = edad;
+    }
+
+    public Usuario(String username, String contrasenia) {
+        this.username = username;
+        this.contrasenia = contrasenia;
     }
 
     public String getUsername() {
@@ -32,11 +37,11 @@ public class Usuario {
         this.username = username;
     }
 
-    public char[] getContrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(char[] contrasenia) {
+    public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
@@ -50,8 +55,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return this.username + "\ncontraseña: " + Arrays.toString(this.contrasenia);
+        return this.username + "\ncontraseña: " + this.contrasenia;
     }
-    
-    
+
 }

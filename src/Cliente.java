@@ -14,9 +14,11 @@ public class Cliente extends Usuario{
     private ArrayList<ListaDeReproduccion> ListasFavoritas = new ArrayList();
     private ArrayList<Cancion> cancionesFavoritas = new ArrayList();
 
-    public Cliente(String username, char[] contrasenia, int edad) {
+    public Cliente(String username, String contrasenia, int edad) {
         super(username, contrasenia, edad);
     }
+
+    
 
     public Cliente() {
     }

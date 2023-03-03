@@ -14,15 +14,18 @@ public class ListaDeReproduccion {
     private String nombre;
     private int conteoDeLikes;
     private ArrayList<Cancion> canciones = new ArrayList();
-    private ArrayList<Cliente> clientesLikes = new ArrayList();
+    private String creador;
 
     public ListaDeReproduccion() {
     }
 
-    public ListaDeReproduccion(String nombre, int conteoDeLikes) {
+    public ListaDeReproduccion(String nombre, int conteoDeLikes, String creador) {
         this.nombre = nombre;
         this.conteoDeLikes = conteoDeLikes;
+        this.creador = creador;
     }
+
+    
 
     public String getNombre() {
         return nombre;
@@ -49,13 +52,14 @@ public class ListaDeReproduccion {
         
     }
 
-    public ArrayList<Cliente> getClientesLikes() {
-        return clientesLikes;
+    public String getCreador() {
+        return creador;
     }
 
-    public void setClientesLikes(ArrayList<Cliente> clientesLikes) {
-        this.clientesLikes = clientesLikes;
+    public void setCreador(String creador) {
+        this.creador = creador;
     }
+
     
     
 

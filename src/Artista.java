@@ -18,10 +18,12 @@ public class Artista extends Usuario{
     public Artista() {
     }
 
-    public Artista(String nombreArtistico, String username, char[] contrasenia, int edad) {
+    public Artista(String nombreArtistico, String username, String contrasenia, int edad) {
         super(username, contrasenia, edad);
         this.nombreArtistico = nombreArtistico;
     }
+
+    
 
     public String getNombreArtistico() {
         return nombreArtistico;
