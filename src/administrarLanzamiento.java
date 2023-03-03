@@ -97,6 +97,7 @@ public class administrarLanzamiento {
                 s.setTituloDePublicacion(cambiar[1]);
                 s.setFechaDeLanzamiento(cambiar[2]);
                 s.setConteoDeLikes(Integer.parseInt(cambiar[3]));
+                lanzamientos.add(s);
             }
             
         }

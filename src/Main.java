@@ -65,12 +65,17 @@ public class Main extends javax.swing.JFrame {
         JPaswordField_CrearClienteContra = new javax.swing.JPasswordField();
         JSpinner_CrearClienteEdad = new javax.swing.JSpinner();
         JButton_CrearClienteUser = new javax.swing.JButton();
-        JFrame_Spotify = new javax.swing.JFrame();
+        JFrame_SpotifyArtisrta = new javax.swing.JFrame();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTree2 = new javax.swing.JTree();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
+        JFrame_SpotifyCliente = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -315,6 +320,8 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+
         jScrollPane3.setViewportView(jTree2);
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
@@ -345,15 +352,45 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout JFrame_SpotifyLayout = new javax.swing.GroupLayout(JFrame_Spotify.getContentPane());
-        JFrame_Spotify.getContentPane().setLayout(JFrame_SpotifyLayout);
-        JFrame_SpotifyLayout.setHorizontalGroup(
-            JFrame_SpotifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout JFrame_SpotifyArtisrtaLayout = new javax.swing.GroupLayout(JFrame_SpotifyArtisrta.getContentPane());
+        JFrame_SpotifyArtisrta.getContentPane().setLayout(JFrame_SpotifyArtisrtaLayout);
+        JFrame_SpotifyArtisrtaLayout.setHorizontalGroup(
+            JFrame_SpotifyArtisrtaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        JFrame_SpotifyLayout.setVerticalGroup(
-            JFrame_SpotifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        JFrame_SpotifyArtisrtaLayout.setVerticalGroup(
+            JFrame_SpotifyArtisrtaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jTree1);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        javax.swing.GroupLayout JFrame_SpotifyClienteLayout = new javax.swing.GroupLayout(JFrame_SpotifyCliente.getContentPane());
+        JFrame_SpotifyCliente.getContentPane().setLayout(JFrame_SpotifyClienteLayout);
+        JFrame_SpotifyClienteLayout.setHorizontalGroup(
+            JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_SpotifyClienteLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+        JFrame_SpotifyClienteLayout.setVerticalGroup(
+            JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_SpotifyClienteLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -486,8 +523,14 @@ public class Main extends javax.swing.JFrame {
 
         for (Usuario usuario : usuarios) {
             if (usuario.getUsername().equals(user) && usuario.getContrasenia().equals(contrasenia)) {
-                JFrame_Spotify.setVisible(true);
-                confirm = false;
+                if (usuario instanceof Artista) {
+                    JFrame_SpotifyArtisrta.setVisible(true);
+                    confirm = false;
+                } else if (usuario instanceof Cliente) {
+                    JFrame_SpotifyCliente.setVisible(true);
+                    confirm = false;
+                }
+
             }
         }
         if (confirm) {
@@ -612,7 +655,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame JFrame_CrearArtista;
     private javax.swing.JFrame JFrame_CrearCliente;
     private javax.swing.JFrame JFrame_CrearUsuario;
-    private javax.swing.JFrame JFrame_Spotify;
+    private javax.swing.JFrame JFrame_SpotifyArtisrta;
+    private javax.swing.JFrame JFrame_SpotifyCliente;
     private javax.swing.JPasswordField JPasswordField_CrearArtistaContra;
     private javax.swing.JPasswordField JPasswordField_PasswordLogIn;
     private javax.swing.JPasswordField JPaswordField_CrearClienteContra;
@@ -635,14 +679,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     // End of variables declaration//GEN-END:variables
 
