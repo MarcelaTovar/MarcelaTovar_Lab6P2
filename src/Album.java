@@ -14,14 +14,18 @@ import java.util.Date;
 public class Album extends Lanzamiento{
     private ArrayList<Cancion> cancionesPertenecen = new ArrayList();
     private int cantidadDeCanciones;
+    private String pertenencia;
 
     public Album() {
     }
 
-    public Album(int cantidadDeCanciones, String tituloDePublicacion, Date fechaDeLanzamiento, int conteoDeLikes) {
+    public Album(int cantidadDeCanciones, String pertenencia, String tituloDePublicacion, String fechaDeLanzamiento, int conteoDeLikes) {
         super(tituloDePublicacion, fechaDeLanzamiento, conteoDeLikes);
         this.cantidadDeCanciones = cantidadDeCanciones;
+        this.pertenencia = pertenencia;
     }
+
+    
 
     public ArrayList<Cancion> getCancionesPertenecen() {
         return cancionesPertenecen;

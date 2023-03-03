@@ -78,31 +78,32 @@ public class administrarUsuario {
 
     public ArrayList<Usuario> cargarArchivo() {
 //        
-        Object[] lineas = null;
+        Object[] guardarS = null;
         try {
             FileReader fr = new FileReader("./usuarios.txt");
             BufferedReader br = new BufferedReader(fr);
 
-            lineas = br.lines().toArray(); 
+            guardarS = br.lines().toArray();
             br.close();
             fr.close();
         } catch (IOException e) {
-            System.out.println(e);
-            e.printStackTrace();
-        }
-        for (int i = 0; i < lineas.length; i++) {
-            String[] arrLine = String.valueOf(lineas[i]).split(";");
-            Usuario u = new Usuario();
-            u.setUsername(arrLine[0]);
-            u.setContrasenia(arrLine[1]);
-            usuarios.add(u);
 
-            {
+        }
+        for (int i = 0; i < guardarS.length; i++) {
+            String[] cambiar = String.valueOf(guardarS[i]).split(";");
+            if (cambiar.length == 4) {
+                Artista a = new Artista(cambiar[0],cambiar[1],cambiar[2],Integer.parseInt(cambiar[3]));
+                usuarios.add(a);
+            }else{
+                Cliente c = new Cliente(cambiar[0],cambiar[1],Integer.parseInt(cambiar[2]));
+                 usuarios.add(c);
             }
+            
+            
+            
+
         }
         return usuarios;
     }
 
 }
-
-

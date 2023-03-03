@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class Lanzamiento {
     protected String tituloDePublicacion;
-    protected Date fechaDeLanzamiento;
+    protected String fechaDeLanzamiento;
     protected int conteoDeLikes;
 
     public Lanzamiento() {
     }
 
-    public Lanzamiento(String tituloDePublicacion, Date fechaDeLanzamiento, int conteoDeLikes) {
+    public Lanzamiento(String tituloDePublicacion, String fechaDeLanzamiento, int conteoDeLikes) {
         this.tituloDePublicacion = tituloDePublicacion;
         this.fechaDeLanzamiento = fechaDeLanzamiento;
         this.conteoDeLikes = conteoDeLikes;
@@ -32,11 +32,11 @@ public class Lanzamiento {
         this.tituloDePublicacion = tituloDePublicacion;
     }
 
-    public Date getFechaDeLanzamiento() {
+    public String getFechaDeLanzamiento() {
         return fechaDeLanzamiento;
     }
 
-    public void setFechaDeLanzamiento(Date fechaDeLanzamiento) {
+    public void setFechaDeLanzamiento(String fechaDeLanzamiento) {
         this.fechaDeLanzamiento = fechaDeLanzamiento;
     }
 

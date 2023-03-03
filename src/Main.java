@@ -526,6 +526,7 @@ public class Main extends javax.swing.JFrame {
             Artista a = new Artista(nombreArtistico, user, contrasenia, edad);
             au.getUsuarios().add(a);
             au.escribirArchivo();
+            au.cargarArchivo();
 //        JOptionPane.showMessageDialog(JFrame_CrearArtista, "Usuario Creado con Exito");
 //        JFrame_CrearArtista.setVisible(false);
 //        this.setVisible(true);
