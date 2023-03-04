@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -25,6 +26,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
 
         au.cargarArchivo();
+        aa.cargarArchivo();
+        ac.cargarArchivo();
 
     }
 
@@ -82,6 +85,10 @@ public class Main extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         JFrame_SpotifyCliente = new javax.swing.JFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree_cliente = new javax.swing.JTree();
@@ -95,8 +102,33 @@ public class Main extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        JTextField_cantidadCancionesA = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        JTextField_IngreseNombreA = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        JTextField_FechaLanzamientoA = new javax.swing.JTextField();
+        jDialog2 = new javax.swing.JDialog();
+        jLabel18 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        JTextField_IngreseNombreS = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        JTextField_FechaLanzamientoAS = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jDialog3 = new javax.swing.JDialog();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        JTextField_nombreCancion1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        JTextField_duracion1 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        JTextField_referenciaalbum1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -345,6 +377,11 @@ public class Main extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lanzamientos");
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTree2);
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
@@ -419,13 +456,41 @@ public class Main extends javax.swing.JFrame {
         });
         jMenuBar2.add(jMenu5);
 
-        jMenu6.setText("Agregar");
+        jMenu6.setText("Agregar Perfil");
         jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu6ActionPerformed(evt);
             }
         });
         jMenuBar2.add(jMenu6);
+
+        jMenu9.setText("Agregar");
+
+        jMenuItem10.setText("Album");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem10);
+
+        jMenuItem11.setText("Single");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem11);
+
+        jMenuItem4.setText("Cancion");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem4);
+
+        jMenuBar2.add(jMenu9);
 
         JFrame_SpotifyArtisrta.setJMenuBar(jMenuBar2);
 
@@ -531,9 +596,207 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jMenuItem4.setText("jMenuItem4");
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Album");
 
-        jMenuItem5.setText("jMenuItem5");
+        jLabel15.setText("Ingrese la cantidad de canciones: ");
+
+        jButton2.setText("Crear Album");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Ingrese el nombre: ");
+
+        jLabel17.setText("Ingrese la fecha:");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialog1Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_IngreseNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_cantidadCancionesA, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog1Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTextField_FechaLanzamientoA, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(jButton2)))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(JTextField_cantidadCancionesA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(JTextField_IngreseNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(JTextField_FechaLanzamientoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(58, 58, 58))
+        );
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Single");
+
+        jButton3.setText("Crear Single");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Ingrese el nombre: ");
+
+        jLabel21.setText("Ingrese la fecha:");
+
+        jLabel26.setText("Ingrese cancion:");
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jDialog2Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTextField_FechaLanzamientoAS, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog2Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_IngreseNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog2Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(jButton3)))
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(JTextField_IngreseNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JTextField_FechaLanzamientoAS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(jButton3)
+                .addGap(58, 58, 58))
+        );
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Cancion");
+
+        jLabel25.setText("Ingreseel nombre de la cancion: ");
+
+        jButton4.setText("Crear cancion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("Ingrese el titulo de duracion:");
+
+        jLabel29.setText("Ingrese la referencia al album:");
+
+        javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
+        jDialog3.getContentPane().setLayout(jDialog3Layout);
+        jDialog3Layout.setHorizontalGroup(
+            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114))
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog3Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialog3Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_nombreCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog3Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_duracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog3Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTextField_referenciaalbum1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jDialog3Layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(jButton4)))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        jDialog3Layout.setVerticalGroup(
+            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(JTextField_nombreCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(JTextField_duracion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(JTextField_referenciaalbum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(82, 82, 82))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -885,7 +1148,7 @@ public class Main extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             String nombrenuevo = JOptionPane.showInputDialog("Ingrese el nuevo nombre Artistico");
-            ((Artista)usuarioActivo).setNombreArtistico(nombrenuevo);
+            ((Artista) usuarioActivo).setNombreArtistico(nombrenuevo);
             au.getUsuarios().add(usuarioActivo);
             au.escribirArchivo();
             au.cargarArchivo();
@@ -912,6 +1175,87 @@ public class Main extends javax.swing.JFrame {
         JFrame_SpotifyArtisrta.setVisible(false);
         JFrame_CrearUsuario.setVisible(true);
     }//GEN-LAST:event_jMenu6ActionPerformed
+
+    private void jTree2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree2MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTree2MouseClicked
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            aa.cargarArchivo();
+            String nombre = JTextField_IngreseNombreA.getText();
+            int cantidadc = Integer.parseInt(JTextField_cantidadCancionesA.getText());
+            String fecha = JTextField_FechaLanzamientoA.getText();
+            int cantidadlikes = 0;
+
+            Album a = new Album(cantidadc, "Album", nombre, fecha, 0);
+            aa.getLanzamientos().add(a);
+            aa.escribirArchivo();
+            aa.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+            for (Cancion t : canciones) {
+                DefaultComboBoxModel modelo
+                        = (DefaultComboBoxModel) jComboBox1.getModel();
+                modelo.addElement(t.getTitulo());
+                jComboBox1.setModel(modelo);
+            }
+        jDialog2.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            aa.cargarArchivo();
+            String nombreC = JTextField_IngreseNombreS.getText();
+            
+            Cancion c
+                    = (Cancion)jComboBox1.getSelectedItem();
+            
+            String fecha = JTextField_FechaLanzamientoAS.getText();
+
+            Single s = new Single(c, JTextField_IngreseNombreS.getText(), fecha, 0);
+            aa.getLanzamientos().add(s);
+            aa.escribirArchivo();
+            aa.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        jDialog3.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ac.cargarArchivo();
+            Cancion c = new Cancion(JTextField_nombreCancion1.getText(), Integer.parseInt(JTextField_duracion1.getText()), JTextField_referenciaalbum1.getText());
+            ac.getCanciones().add(c);
+            ac.escribirArchivo();
+            ac.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -965,15 +1309,42 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField JTextField_CrearArtistaUsuario;
     private javax.swing.JTextField JTextField_CrearClienteUsuario;
     private javax.swing.JTextField JTextField_CrearNombreUsuario;
+    private javax.swing.JTextField JTextField_FechaLanzamientoA;
+    private javax.swing.JTextField JTextField_FechaLanzamientoAS;
+    private javax.swing.JTextField JTextField_IngreseNombreA;
+    private javax.swing.JTextField JTextField_IngreseNombreS;
     private javax.swing.JTextField JTextField_UserLogIn;
+    private javax.swing.JTextField JTextField_cantidadCancionesA;
+    private javax.swing.JTextField JTextField_duracion1;
+    private javax.swing.JTextField JTextField_nombreCancion1;
+    private javax.swing.JTextField JTextField_referenciaalbum1;
     private javax.swing.JTree JTree_cliente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JDialog jDialog3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -989,13 +1360,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -1015,6 +1388,10 @@ public class Main extends javax.swing.JFrame {
 //Variables globales
     private static Usuario usuarioActivo = new Usuario();
     administrarUsuario au = new administrarUsuario("./usuarios.txt");
+    administrarLanzamiento aa = new administrarLanzamiento("./lanzamientos.txt");
+    ArrayList<Lanzamiento> lanzamientos = aa.getLanzamientos();
+    administrarCanciones ac = new administrarCanciones("./canciones.txt");
+    ArrayList<Cancion> canciones = ac.getCanciones();
 
     ArrayList<Usuario> usuarios = au.getUsuarios();
 
