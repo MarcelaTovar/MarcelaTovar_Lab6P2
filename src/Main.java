@@ -1315,24 +1315,17 @@ public class Main extends javax.swing.JFrame {
             ac.getCanciones().add(c);
             ac.escribirArchivo();
             ac.cargarArchivo();
-            
-            /*
-            au.cargarArchivo();
-            String user = "", nombreArtistico = "";
-            String contrasenia = "";
-            int edad = 0;
-            user = JTextField_CrearArtistaUsuario.getText();
-            contrasenia = String.valueOf(JPasswordField_CrearArtistaContra.getPassword());
-            edad = (int) JSpinner_CrearArtistaEdad.getValue();
-            nombreArtistico = JTextField_CrearNombreUsuario.getText();
-            Artista a = new Artista(nombreArtistico, user, contrasenia, edad);
-            au.getUsuarios().add(a);
-            au.escribirArchivo();
-            au.cargarArchivo();
-            
-            */
-            
-            
+
+            DefaultListModel list = new DefaultListModel();
+            list.removeAllElements();
+            for (Cancion a : ac.getCanciones()) {
+
+                list.addElement(a);
+
+                
+            }
+            jList2.setModel(list);
+
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1348,14 +1341,13 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-        DefaultListModel modeloLISTA
-                = (DefaultListModel) jList1.getModel();
-        modeloLISTA.removeAllElements();
-        jList1.setModel(modeloLISTA);
+        DefaultListModel list = new DefaultListModel();
+        list.removeAllElements();
+        jList1.setModel(list);
 
-        modeloLISTA.addElement(jComboBox2.getSelectedItem());
+        list.addElement(jComboBox2.getSelectedItem());
 
-        jList1.setModel(modeloLISTA);
+        jList1.setModel(list);
 
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -1491,6 +1483,9 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 //Variables globales
+    
+    DefaultListModel listaModelo = new DefaultListModel();
+    
     private static Usuario usuarioActivo = new Usuario();
     administrarUsuario au = new administrarUsuario("./usuarios.txt");
     administrarLanzamiento aa = new administrarLanzamiento("./lanzamientos.txt");
