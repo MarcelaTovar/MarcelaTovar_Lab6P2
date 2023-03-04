@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -26,8 +27,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
 
         au.cargarArchivo();
-        //aa.cargarArchivo();
-       // ac.cargarArchivo();
+        aa.cargarArchivo();
+        ac.cargarArchivo();
 
     }
 
@@ -95,6 +96,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -384,11 +388,6 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTree2);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(jList2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -509,6 +508,11 @@ public class Main extends javax.swing.JFrame {
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Lista");
         treeNode1.add(treeNode2);
         JTree_cliente.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        JTree_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTree_clienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTree_cliente);
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -527,6 +531,17 @@ public class Main extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel19.setText("Escoger Canciones:");
+
+        jButton5.setText("Escoger");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
             }
         });
 
@@ -580,24 +595,37 @@ public class Main extends javax.swing.JFrame {
         JFrame_SpotifyCliente.getContentPane().setLayout(JFrame_SpotifyClienteLayout);
         JFrame_SpotifyClienteLayout.setHorizontalGroup(
             JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JFrame_SpotifyClienteLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrame_SpotifyClienteLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(76, 76, 76))
         );
         JFrame_SpotifyClienteLayout.setVerticalGroup(
             JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrame_SpotifyClienteLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(JFrame_SpotifyClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JFrame_SpotifyClienteLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -934,6 +962,13 @@ public class Main extends javax.swing.JFrame {
         for (Usuario usuario : usuarios) {
             if (usuario.getUsername().equals(user) && usuario.getContrasenia().equals(contrasenia)) {
                 if (usuario instanceof Artista) {
+                    jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+                    for (Cancion t : canciones) {
+                        DefaultComboBoxModel modelo
+                                = (DefaultComboBoxModel) jComboBox2.getModel();
+                        modelo.addElement(t.getTitulo());
+                        jComboBox2.setModel(modelo);
+                    }
                     JFrame_SpotifyArtisrta.setVisible(true);
                     usuarioActivo = usuario;
 
@@ -1010,6 +1045,7 @@ public class Main extends javax.swing.JFrame {
             Cliente c = new Cliente(user, contrasenia, edad);
             au.getUsuarios().add(c);
             au.escribirArchivo();
+            au.cargarArchivo();
 //        JOptionPane.showMessageDialog(JFrame_CrearCliente, "Usuario Creado con Exito");
 //        JFrame_CrearCliente.setVisible(false);
 //        this.setVisible(true);
@@ -1030,15 +1066,14 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        
-        
+
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la playlist");
 
         DefaultTreeModel m = (DefaultTreeModel) JTree_cliente.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode nodo_lista;
-        nodo_lista = new DefaultMutableTreeNode(new ListaDeReproduccion(nombre,0,usuarioActivo.getUsername()));
+        nodo_lista = new DefaultMutableTreeNode(new ListaDeReproduccion(nombre, 0, usuarioActivo.getUsername()));
         raiz.add(nodo_lista);
         m.reload();
 
@@ -1091,9 +1126,9 @@ public class Main extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             int index = usuarios.indexOf(usuarioActivo);
-            usuarios.remove(index);
-            au.escribirArchivo();
             au.cargarArchivo();
+            au.getUsuarios().remove(index);
+            au.escribirArchivo();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1170,8 +1205,10 @@ public class Main extends javax.swing.JFrame {
             // TODO add your handling code here:
             int index = usuarios.indexOf(usuarioActivo);
             usuarios.remove(index);
-            au.escribirArchivo();
+
             au.cargarArchivo();
+            au.getUsuarios().remove(index);
+            au.escribirArchivo();
             JFrame_SpotifyArtisrta.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -1248,7 +1285,7 @@ public class Main extends javax.swing.JFrame {
             String fecha = JTextField_FechaLanzamientoAS.getText();
 
             Single s = new Single(c, JTextField_IngreseNombreS.getText(), fecha, 0);
-            
+
             DefaultTreeModel m = (DefaultTreeModel) jTree2.getModel();
             DefaultMutableTreeNode raiz
                     = (DefaultMutableTreeNode) m.getRoot();
@@ -1256,8 +1293,7 @@ public class Main extends javax.swing.JFrame {
             nodo_lista = new DefaultMutableTreeNode(s);
             raiz.add(nodo_lista);
             m.reload();
-            
-            
+
             aa.getLanzamientos().add(s);
             aa.escribirArchivo();
             aa.cargarArchivo();
@@ -1279,6 +1315,24 @@ public class Main extends javax.swing.JFrame {
             ac.getCanciones().add(c);
             ac.escribirArchivo();
             ac.cargarArchivo();
+            
+            /*
+            au.cargarArchivo();
+            String user = "", nombreArtistico = "";
+            String contrasenia = "";
+            int edad = 0;
+            user = JTextField_CrearArtistaUsuario.getText();
+            contrasenia = String.valueOf(JPasswordField_CrearArtistaContra.getPassword());
+            edad = (int) JSpinner_CrearArtistaEdad.getValue();
+            nombreArtistico = JTextField_CrearNombreUsuario.getText();
+            Artista a = new Artista(nombreArtistico, user, contrasenia, edad);
+            au.getUsuarios().add(a);
+            au.escribirArchivo();
+            au.cargarArchivo();
+            
+            */
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1287,6 +1341,23 @@ public class Main extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JTree_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTree_clienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTree_clienteMouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        DefaultListModel modeloLISTA
+                = (DefaultListModel) jList1.getModel();
+        modeloLISTA.removeAllElements();
+        jList1.setModel(modeloLISTA);
+
+        modeloLISTA.addElement(jComboBox2.getSelectedItem());
+
+        jList1.setModel(modeloLISTA);
+
+    }//GEN-LAST:event_jButton5MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1354,7 +1425,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
@@ -1368,6 +1441,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

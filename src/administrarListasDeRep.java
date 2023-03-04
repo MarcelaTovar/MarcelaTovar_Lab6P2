@@ -64,24 +64,27 @@ public class administrarListasDeRep {
         bw.close();
         fw.close();
     }
-    
+
     public ArrayList<ListaDeReproduccion> cargarArchivo() {
 //        
         Object[] guardarS = null;
-        try {
-            FileReader fr = new FileReader("./listas.txt");
-            BufferedReader br = new BufferedReader(fr);
+        if (archivo.exists()) {
+            try {
+                FileReader fr = new FileReader("./listas.txt");
+                BufferedReader br = new BufferedReader(fr);
 
-            guardarS = br.lines().toArray();
-            br.close();
-            fr.close();
-        } catch (IOException e) {
+                guardarS = br.lines().toArray();
+                br.close();
+                fr.close();
+            } catch (IOException e) {
 
-        }
-        for (int i = 0; i < guardarS.length; i++) {
-            String[] cambiar = String.valueOf(guardarS[i]).split(";");
-            ListaDeReproduccion l = new ListaDeReproduccion(cambiar[0],Integer.parseInt(cambiar[1]),cambiar[2]);
-            listasderep.add(l);
+            }
+            for (int i = 0; i < guardarS.length; i++) {
+                String[] cambiar = String.valueOf(guardarS[i]).split(";");
+                ListaDeReproduccion l = new ListaDeReproduccion(cambiar[0], Integer.parseInt(cambiar[1]), cambiar[2]);
+                listasderep.add(l);
+            }
+
         }
         return listasderep;
     }

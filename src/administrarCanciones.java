@@ -19,7 +19,7 @@ public class administrarCanciones {
 
     private ArrayList<Cancion> canciones = new ArrayList();
     private File archivo = null;
-    
+
     public administrarCanciones(String path) {
         archivo = new File(path);
     }
@@ -66,25 +66,29 @@ public class administrarCanciones {
         bw.close();
         fw.close();
     }
-    
+
     public ArrayList<Cancion> cargarArchivo() {
 //        
         Object[] guardarS = null;
-        try {
-            FileReader fr = new FileReader("./canciones.txt");
-            BufferedReader br = new BufferedReader(fr);
+        if (archivo.exists()) {
+            try {
+                FileReader fr = new FileReader("./canciones.txt");
+                BufferedReader br = new BufferedReader(fr);
 
-            guardarS = br.lines().toArray();
-            br.close();
-            fr.close();
-        } catch (IOException e) {
+                guardarS = br.lines().toArray();
+                br.close();
+                fr.close();
+            } catch (IOException e) {
 
-        }
-        for (int i = 0; i < guardarS.length; i++) {
-            String[] cambiar = String.valueOf(guardarS[i]).split(";");
-            Cancion c = new Cancion(cambiar[0],Integer.parseInt(cambiar[1]),cambiar[2]);
-            canciones.add(c);
+            }
+            for (int i = 0; i < guardarS.length; i++) {
+                String[] cambiar = String.valueOf(guardarS[i]).split(";");
+                Cancion c = new Cancion(cambiar[0], Integer.parseInt(cambiar[1]), cambiar[2]);
+                canciones.add(c);
+            }
+            
         }
         return canciones;
+
     }
 }
