@@ -26,8 +26,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
 
         au.cargarArchivo();
-        aa.cargarArchivo();
-        ac.cargarArchivo();
+        //aa.cargarArchivo();
+       // ac.cargarArchivo();
 
     }
 
@@ -522,6 +522,11 @@ public class Main extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -1025,13 +1030,15 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        
+        
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la playlist");
 
         DefaultTreeModel m = (DefaultTreeModel) JTree_cliente.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode nodo_lista;
-        nodo_lista = new DefaultMutableTreeNode(new ListaDeReproduccion());
+        nodo_lista = new DefaultMutableTreeNode(new ListaDeReproduccion(nombre,0,usuarioActivo.getUsername()));
         raiz.add(nodo_lista);
         m.reload();
 
@@ -1165,6 +1172,7 @@ public class Main extends javax.swing.JFrame {
             usuarios.remove(index);
             au.escribirArchivo();
             au.cargarArchivo();
+            JFrame_SpotifyArtisrta.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1275,6 +1283,10 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
