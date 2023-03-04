@@ -1199,6 +1199,15 @@ public class Main extends javax.swing.JFrame {
             aa.getLanzamientos().add(a);
             aa.escribirArchivo();
             aa.cargarArchivo();
+
+            DefaultTreeModel m = (DefaultTreeModel) jTree2.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_lista;
+            nodo_lista = new DefaultMutableTreeNode(a);
+            raiz.add(nodo_lista);
+            m.reload();
+
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1209,12 +1218,12 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
-            for (Cancion t : canciones) {
-                DefaultComboBoxModel modelo
-                        = (DefaultComboBoxModel) jComboBox1.getModel();
-                modelo.addElement(t.getTitulo());
-                jComboBox1.setModel(modelo);
-            }
+        for (Cancion t : canciones) {
+            DefaultComboBoxModel modelo
+                    = (DefaultComboBoxModel) jComboBox1.getModel();
+            modelo.addElement(t.getTitulo());
+            jComboBox1.setModel(modelo);
+        }
         jDialog2.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem11ActionPerformed
@@ -1224,13 +1233,23 @@ public class Main extends javax.swing.JFrame {
             // TODO add your handling code here:
             aa.cargarArchivo();
             String nombreC = JTextField_IngreseNombreS.getText();
-            
+
             Cancion c
-                    = (Cancion)jComboBox1.getSelectedItem();
-            
+                    = (Cancion) jComboBox1.getSelectedItem();
+
             String fecha = JTextField_FechaLanzamientoAS.getText();
 
             Single s = new Single(c, JTextField_IngreseNombreS.getText(), fecha, 0);
+            
+            DefaultTreeModel m = (DefaultTreeModel) jTree2.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_lista;
+            nodo_lista = new DefaultMutableTreeNode(s);
+            raiz.add(nodo_lista);
+            m.reload();
+            
+            
             aa.getLanzamientos().add(s);
             aa.escribirArchivo();
             aa.cargarArchivo();
