@@ -90,6 +90,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         JFrame_SpotifyCliente = new javax.swing.JFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree_cliente = new javax.swing.JTree();
@@ -488,6 +489,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuItem4);
+
+        jMenuItem5.setText("Agrear cancion al Album");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem5);
 
         jMenuBar2.add(jMenu9);
 
@@ -1351,6 +1360,23 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        
+        String p = JOptionPane.showInputDialog("Ingrese la posicion: ");
+        canciones.get(Integer.parseInt(p));
+        DefaultTreeModel m = (DefaultTreeModel) jTree2.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_cancion;
+            DefaultMutableTreeNode nodo_lista;
+            nodo_cancion = new DefaultMutableTreeNode(p);
+            nodo_lista = new DefaultMutableTreeNode();
+            nodo_lista.add(nodo_cancion);
+            raiz.add(nodo_lista);
+            m.reload();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1466,6 +1492,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
